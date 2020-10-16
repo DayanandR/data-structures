@@ -1,0 +1,86 @@
+#include<stdio.h>
+
+int top=-1;
+void push(char stack[],char ch,int n)
+{ if(top==n-1)
+   printf("Stack is Full");
+  else
+  { top++;
+    stack[top]=ch;}
+}
+
+char pop(char stack[])
+{   char item;
+    if (top==-1)
+        printf("\n stack is empty !");
+    else
+    {
+        item=stack[top];
+        top--;
+        return item;
+    }
+       
+}
+
+int emptych()
+{ if(top==-1)
+   return 0 ;
+  else
+   return 1; }
+
+char topstack(char stack[])
+{if(top==-1)
+  printf("Empty stack");
+ else 
+  return stack[top];
+ }
+
+int priority(char ch)
+{ switch(ch)
+  { case '+':
+    case '-': return 1;
+    case '*':
+    case '/': return 2;
+    case '^': return 3;
+    default : return 0; }
+  return -1;
+}
+int main()
+{ char infix[50],stack[10],item;
+  int i=0,n=10;
+  printf("Enter the infix expression:\n");
+  scanf("%s",infix);
+  printf("Postfix Expresson:");
+  while(infix[i]!='\0')
+  {
+    switch(infix[i])
+    {case '(': push(stack,infix[i],n);
+               break;
+     case ')': while((item=pop(stack))!='(')
+                printf("%c",item);
+               break;
+     case '+':
+     case '-':
+     case '*':
+     case '/':
+     case '^': while(emptych()&&(priority(infix[i])<=priority(topstack(stack))))
+               { item=pop(stack);
+                 if(item!='(')
+                 printf("%c",item);}
+               push(stack,infix[i],n);
+               break;
+     default : printf("%c",infix[i]);
+               break;
+     }
+    i++;
+  }
+  
+  while(emptych())
+    {
+        char item;
+        item=pop(stack);
+        printf("%c", item);
+        
+    }
+  return 0;
+}
