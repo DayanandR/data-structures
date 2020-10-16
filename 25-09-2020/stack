@@ -1,0 +1,53 @@
+#include <stdio.h>
+int TOP=-1;
+void push(int a[],int ele,int n)
+{ if(TOP==n-1)
+   printf("\nStack Overflow");
+  else 
+  { TOP++;
+    a[TOP]=ele;
+    }
+ }
+
+int pop(int a[])
+{ int ele;
+  if(TOP==-1)
+   printf("\nStack Underflow");
+  else
+  { ele=a[TOP];
+    TOP--;
+    return ele;
+    }
+}
+
+void display(int a[])
+{ if(TOP==-1)
+   printf("Stack Empty");
+  else
+  {printf("The elements are:\n");
+   for(int i=0;i<=TOP;i++)
+   {printf("%d\n",a[i]);}
+  }
+}
+
+int main() 
+{ int ch,ele,a[5],n=5;
+  do
+  {printf("\n1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT\nEnter your choice:\n");
+   scanf("%d",&ch);
+   switch(ch)
+   { case 1 :printf("Enter the element to be pushed: ");
+             scanf("%d",&ele);
+             push(a,ele,n);
+             break;
+     case 2 :ele=pop(a);
+             printf("\nElement : %d is popped off the stack.",ele); 
+             break;
+     case 3 :display(a,5);
+             break;
+     default:if(ch!=4)
+             printf("Enter valid option.");
+    }
+  }while(ch!=4);
+ return 0;  
+}
