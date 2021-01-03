@@ -1,0 +1,33 @@
+#include <stdio.h>
+typedef struct student 
+{int id,age,marks;}
+student;
+
+
+int main() 
+{ int n;
+  student s[15];
+  printf("Entre the no of students:\n");
+  scanf("%d",&n);
+  printf("Enter student details\n1 ID\n2 AGE\n3 MARKS\n");
+  for(int m=0;m<n;m++)
+  {scanf("%d%d%d",&s[n].id,&s[n].age,&s[n].marks);
+   printf("\n");
+   printf("%d %d %d",s[n].id,s[n].age,s[n].marks);}
+   for(int a=0;a<n;a++)
+  {
+   printf("%d %d %d",s[a].id,s[a].age,s[a].marks);}
+
+  for(int m=0;m<n;m++)
+  {if(s[n].age>20)
+  { if(s[n].marks<=100&&s[n].marks>64)
+    printf("ID:%d\nAGE:%d\nMARKS:%d\nELIGIBLE",s[n].id,s[n].age,s[n].marks);
+    else
+    printf("\nMarks are not as required%d %d %d %d",s[n].marks,s[n].age,s[n].id,n);
+  }
+  else
+  printf("Age is below 20");
+ }
+
+  return 0;
+}
